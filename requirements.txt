@@ -2,5 +2,6 @@ flask
 pathlib
 python-dotenv
 selenium
+webdriver_manager
 PyJWT
 flask-bcrypt
