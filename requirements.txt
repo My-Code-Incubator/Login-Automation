@@ -1,0 +1,6 @@
+flask
+pathlib
+python-dotenv
+selenium
+PyJWT
+flask-bcrypt
