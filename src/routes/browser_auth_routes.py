@@ -1,6 +1,6 @@
 # AUTHOR: HBFL3Xx
 
-
+import os
 from flask import Blueprint, request, jsonify
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
@@ -10,12 +10,6 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 browser_auth_bp = Blueprint('browser_auth', __name__)
 
-# API endpoint URL
-API_LOGIN_URL = 'https://the-internet.herokuapp.com/login'
-
-# Dummy access token for testing purposes since the site we are testing doesnt provide access tokens
-# This will change later after we have incorporated all functionalities to use real-world tokens
-DUMMY_ACCESS_TOKEN = 'eyJhbGciOiAiSFMyNTYiLCAiaWF0IjoxNjg2NzUyMzEyLCJleHBpIjoxNjg2NzU1OTEyLCJ1c2VyX2lkIjogImR1bW15X3VzZXJfMTIzIn0.eyJhbGciOiAiSFMyNTYiLCAiaWF0IjoxNjg2NzUyMzEyLCJleHBpIjoxNjg2NzU1OTEyLCJ1c2VyX2lkIjogImR1bW15X3VzZXJfMTIzIn0.7nTvlbgPQeRoe4eK5LBqvH60J3_eU1owXaFpm7mMi0s'
 
 def initialize_webdriver():
     """Initialize and return the Chrome WebDriver."""
@@ -24,7 +18,7 @@ def initialize_webdriver():
 
 def login_to_site(driver, username, password):
     """Perform login action on the site."""
-    driver.get(API_LOGIN_URL)
+    driver.get(os.environ.get('API_LOGIN_URL'))
     driver.find_element(by=By.ID, value='username').send_keys(username)
     driver.find_element(by=By.ID, value='password').send_keys(password)
     driver.find_element(by=By.CSS_SELECTOR, value='button.radius').click()
@@ -52,7 +46,7 @@ def authenticate_browser():
         login_to_site(driver, username, password)
 
         if is_login_successful(driver):
-            return jsonify({'access_token': DUMMY_ACCESS_TOKEN, 'site_name': driver.title}), 200
+            return jsonify({'access_token': os.environ.get('DUMMY_ACCESS_TOKEN'), 'site_name': driver.title}), 200
         else:
             return jsonify({'error': 'Invalid email or password. Try again!'}), 400
 
