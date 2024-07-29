@@ -1,19 +1,6 @@
-# Login-Automation
- This is a Python-based API project designed to automate the login process for a mobile application. The API will simulate user interactions and handles session registration, browser authentication, and authorization token retrieval, providing a seamless and automated way to authenticate users.
+# HOW TO USE THE ENDPOINT
 
-## Features
-
-- **Session Registration**
-- **Browser Authentication**
-- **Authorization Token Retrieval**
-
-## Contributing
-
-Contributions are welcome! Please follow these guidelines:
-
-- **Branching:** Always create a new branch from the `develop` branch for your feature.
-- **Pull Requests:** Submit a pull request to merge your changes into the `develop` branch. Ensure your pull request includes a detailed description of the changes.
-- **No Direct Pushes to Master:** Do not push directly to the `master` branch. All changes must be reviewed and approved via pull requests to the `develop` branch.
-
-# Communication
-- **Use GitHub issues to discuss tasks and track progress.**
+- send post data to this url -> http://127.0.0.1:5000/authenticate_browser
+- Request body should include (device_id, username, password)
+- For successful login use, **tomsmith** as the username and **SuperSecretPassword!** as the password, device id can be any string.
+- Finally the route returns a dummy access token and site_name as the payload.
