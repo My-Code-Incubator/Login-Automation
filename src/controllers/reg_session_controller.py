@@ -1,7 +1,7 @@
 from flask import request, Response, json
 import requests
 import os
-from src.utils.reg_session import generate_signature, extract_browser_info
+from src.utils.reg_session import generate_signature
 def register_session():
   """
   Registers a new session by sending a POST request to the API with device and user information.
