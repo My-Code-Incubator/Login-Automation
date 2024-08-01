@@ -1,4 +1,6 @@
 from flask import Blueprint
+from .browser_auth_routes import browser_auth_bp
+
 
 health_bp = Blueprint('health', __name__)
 
@@ -8,3 +10,4 @@ def health_check():
 
 def register_routes(app):
     app.register_blueprint(health_bp)
+    app.register_blueprint(browser_auth_bp)
