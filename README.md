@@ -31,6 +31,13 @@ For a successful request, the following will be a response
 
 `NB` : Don't forget to copy `API_URI` and `SECRET_KEY` variables from `.env.example` file to your `.env` file.
 
+### 2. Testing Browser Authentication
+
+- send post data to this url -> http://127.0.0.1:5000/authenticate_browser
+- Request body should include (device_id, username, password)
+- For successful login use, **tomsmith** as the username and **SuperSecretPassword!** as the password, device id can be any string.
+- Finally the route returns a dummy access token and site_name as the payload.
+
 ## Contributing
 
 Contributions are welcome! Please follow these guidelines:
